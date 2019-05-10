@@ -88,7 +88,18 @@ import re as _re
 import shutil as _shutil
 import sys as _sys
 
-from gettext import gettext as _, ngettext
+import gettext as _gettext
+
+_DIR_PATH = _os.path.dirname(_os.path.realpath(__file__))
+
+try:
+    _TRANSLATIONS = _gettext.translation(
+        'argparse', localedir=_os.path.join(_DIR_PATH, 'locale'))
+    _ = lambda x: _TRANSLATIONS.gettext(x)
+    ngettext = lambda *args: _TRANSLATIONS.ngettext(*args)
+except FileNotFoundError:
+    _ = _gettext.gettext
+    ngettext = _gettext.ngettext
 
 SUPPRESS = '==SUPPRESS=='
 
