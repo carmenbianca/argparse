@@ -83,12 +83,11 @@ __all__ = [
 ]
 
 
+import gettext as _gettext
 import os as _os
 import re as _re
 import shutil as _shutil
 import sys as _sys
-
-import gettext as _gettext
 
 _DIR_PATH = _os.path.dirname(_os.path.realpath(__file__))
 
